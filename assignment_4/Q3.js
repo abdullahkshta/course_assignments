@@ -30,7 +30,6 @@ app.patch("/alter/:fn", async (req, res) => {
           .json({ massage: `( ${item} ) value doesn't match with the roles` });
       }
     }
-    //
   });
   let type;
   let nullable;
@@ -148,10 +147,17 @@ app.put("/users/set-upMange", async (req, res) => {
           body.att[index] = attr.toUpperCase();
         }
       });
-      await db.query(
-        `${method} ${body.att.join(", ")} ON store.* ${method == "REVOKE" ? "FROMnpm" : "TO"} ??@??`,
-        [body.u_name, body.host],
-      );
+      if (body.att.includes("DELETE") && method == "GRANT") {
+        await db.query(
+          `${method} ${body.att.join(", ")} ON store.sales ${method == "REVOKE" ? "FROM" : "TO"} ??@??`,
+          [body.u_name, body.host],
+        );
+      } else {
+        await db.query(
+          `${method} ${body.att.join(", ")} ON store.* ${method == "REVOKE" ? "FROM" : "TO"} ??@??`,
+          [body.u_name, body.host],
+        );
+      }
     }
     res.json(`done`);
   } catch (err) {
