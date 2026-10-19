@@ -1,0 +1,23 @@
+1- db.createCollection('books',{validator:{title:{ $exists: true }}});
+2- db.authors.insertOne({"name" : "Author1" , "nationality" : "British"});
+3- db.createCollection('logs', {capped :true , size:1048576});
+4- db.books.createIndex({title:1});
+5- db.books.insertOne({"title":"Book1","author" : "Ali","year":1937, "genres" : ["Fantasy" ,"Adventure"]} );
+6- db.books.insertMany([
+{title :"Future",author:"George Orwell",year:2020,genres:["Science Fiction"]},
+{title :"To Kill a mockingbird",author:"Marper lee",year:1960,genres:["Classic" ,"Fiction"]},
+{title :"Brave New World", author :"Aldous Huxley",year:2006,genres:['Dystopian' ,"Science Fiction"]}
+]);
+7- db.logs.insertOne({book_id:'6ad32158a58e60dfc8933339',action:"borrowed"})
+8- db.books.updateOne({title:"Future"},{$set:{year:2022}});
+9- db.books.findOne({title:"Brave New World"});
+10- db.books.aggregate([{$match:{year:{$gte:1990,$lte:2010}}}]);
+11- db.books.aggregate([{ $match: { genres:"Science Fiction" } }]);
+12- db.books.aggregate([{$sort:{year:-1}},{$skip:2},{$limit:3}]);
+13- db.books.find({year:{$type:"int"}});
+14- db.books.aggregate({$match:[{genres:{$ne:"Horror"}},{genres:{$ne:"Science Fiction"}}]});
+15- db.books.deleteMany({year:{$lt:2000}});
+16- db.books.aggregate([{$match:{year:{$gt:2000}}},{$sort:{year:-1}}]);
+17- db.books.aggregate([{$match:{year:{$gt:2000}}},{$project:{title:1,auther:1,year:1,_id:0}}]);
+18-  db.books.aggregate([{$unwind:"$genres"},{$project:{title:1, genres:1, _id:0}}]);
+19- db.logs.aggregate([{$lookup:{from:"books",let:{localId:{$toObjectId:"$book_id"}} ,pipeline:[{$match:{$expr:{$eq:["$_id","$$localId"]}}},{$project:{_id:0,genres:0}}],as:"book_detalis"}},{$project:{_id:0,book_id:0}},])

@@ -1,0 +1,227 @@
+{
+  "info": {
+    "name": "MongoDB API Requests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Books Collection",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/collection/books",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["collection", "books"]
+        }
+      }
+    },
+    {
+      "name": "Create Author Collection",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/collection/author",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["collection", "author"]
+        }
+      }
+    },
+    {
+      "name": "Create Capped Logs Collection",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"limt\":1048576\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/collection/logs/capped",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["collection", "logs", "capped"]
+        }
+      }
+    },
+    {
+      "name": "Create Books Index",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"field\":\"title\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/collection/books/index",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["collection", "books", "index"]
+        }
+      }
+    },
+    {
+      "name": "Add Single Book",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\":\"Book1\",\r\n    \"auther\":\"Ali\",\r\n    \"year\":1937,\r\n    \"genres\":[\"Fantasy\", \"Adventure\"]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/books",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books"]
+        }
+      }
+    },
+    {
+      "name": "Add Batch Books",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"data\":[\r\n        {\r\n            \"title\":\"Future\",\r\n            \"auther\":\"Ali2\",\r\n            \"year\":2020,\r\n            \"genres\":[\"Science Fiction\", \"Adventure\"]\r\n        },\r\n        {\r\n            \"title\":\"To Kill a Mockingbird\",\r\n            \"auther\":\"Ali3\",\r\n            \"year\":1960,\r\n            \"genres\":[\"Horror\", \"Adventure\"]\r\n        },\r\n        {\r\n            \"title\":\"Brave New World\",\r\n            \"auther\":\"Ali4\",\r\n            \"year\":2006,\r\n            \"genres\":[\"Fantasy\", \"Adventure\"]\r\n        }\r\n    ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/books/batch",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "batch"]
+        }
+      }
+    },
+    {
+      "name": "Add Log",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"book_id\":\"6ad51fe852a7f149807e4110\",\r\n\"action\":\"borrowed\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/logs",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["logs"]
+        }
+      }
+    },
+    {
+      "name": "Update Book (Patch)",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"year\":2020\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/books/Future",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "Future"]
+        }
+      }
+    },
+    {
+      "name": "Get Book by Title",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/title?title=Brave New World",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "title"],
+          "query": [
+            {
+              "key": "title",
+              "value": "Brave New World"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Books by Year Range",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/year?from=1990&to=2010",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "year"],
+          "query": [
+            {
+              "key": "from",
+              "value": "1990"
+            },
+            {
+              "key": "to",
+              "value": "2010"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
