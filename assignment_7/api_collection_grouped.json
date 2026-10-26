@@ -1,0 +1,438 @@
+{
+  "info": {
+    "_postman_id": "api-collection-grouped-id",
+    "name": "API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Signup User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.do@example.com\",\n  \"password\": \"securePassword123\",\n  \"phone\": \"01123456378\",\n  \"age\": 25\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/users/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "users",
+                "signup"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john.do@example.com\",\n  \"password\": \"securePassword123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/users/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "users",
+                "login"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Logged-in User Information",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Name\",\n  \"email\": \"updated.email@example.com\",\n  \"age\": 30\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/users/6ade76d0cf4e6f7f7dc24291",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "users",
+                "6ade76d0cf4e6f7f7dc24291"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Logged-in User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/users?id=6ade76d0cf4e6f7f7dc24291",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "6ade76d0cf4e6f7f7dc24291"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Logged-in User Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/users?id=6ade7fa890ec7cc24cc498b8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "6ade7fa890ec7cc24cc498b8"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notes",
+      "item": [
+        {
+          "name": "Create Single Note",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"First ddNote\",\n  \"content\": \"This content for notes\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/notes?userId=6ade7fa890ec7cc24cc498b8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notes"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "6ade7fa890ec7cc24cc498b8"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Single Note by ID",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Title\",\n  \"content\": \"Updated content text\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/notes/6ade9edd2fe789945bf59ee3?userId=6ade7fa890ec7cc24cc498b8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notes",
+                "6ade9edd2fe789945bf59ee3"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "6ade7fa890ec7cc24cc498b8"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Replace Entire Note Document",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Replaced Title\",\n  \"content\": \"Replaced content text\",\n  \"userId\": \"6ade7fa890ec7cc24cc498b8\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/notes/replace/6ade9edd2fe789945bf59ee3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notes",
+                "replace",
+                "6ade9edd2fe789945bf59ee3"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Single Note by ID",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/notes/6ade9edd2fe789945bf59ee3?userId=6ade7fa890ec7cc24cc498b8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notes",
+                "6ade9edd2fe789945bf59ee3"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "6ade7fa890ec7cc24cc498b8"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Retrieve Paginated and Sorted Notes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/notes/paginate-sort?page=2&limit=2&userId=6ade7fa890ec7cc24cc498b8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notes",
+                "paginate-sort"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "2"
+                },
+                {
+                  "key": "limit",
+                  "value": "2"
+                },
+                {
+                  "key": "userId",
+                  "value": "6ade7fa890ec7cc24cc498b8"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Note by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/notes/6adea5282963b1e8ebd70db9?userId=6ade7fa890ec7cc24cc498b8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notes",
+                "6adea5282963b1e8ebd70db9"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "6ade7fa890ec7cc24cc498b8"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Note by Content Search",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/notes/note-by-content?content=Workout&userId=6ade7fa890ec7cc24cc498b8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notes",
+                "note-by-content"
+              ],
+              "query": [
+                {
+                  "key": "content",
+                  "value": "Workout"
+                },
+                {
+                  "key": "userId",
+                  "value": "6ade7fa890ec7cc24cc498b8"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Notes with User Info (Selected Fields)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/notes/note-with-user?userId={{userId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notes",
+                "note-with-user"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "{{userId}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Notes with User Info using Aggregation",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/notes/aggregate?title=Code%20Review%20Notes&userId={{userId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notes",
+                "aggregate"
+              ],
+              "query": [
+                {
+                  "key": "title",
+                  "value": "Code Review Notes"
+                },
+                {
+                  "key": "userId",
+                  "value": "{{userId}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete All Notes for User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/notes/deleteAll?userId=6ade7fa890ec7cc24cc498b8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "notes",
+                "deleteAll"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "6ade7fa890ec7cc24cc498b8"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
