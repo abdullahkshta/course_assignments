@@ -1,0 +1,6 @@
+export const errHandler = async (err, req, res, next) => {
+  return res.status(err.cause || 500).json({
+    message: err.message || " Internal server error",
+    ...(process.env.NODE_ENV == "production" ? {} : { stack: err.stack }),
+  });
+};
